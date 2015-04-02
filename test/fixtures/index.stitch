@@ -1,0 +1,10 @@
+<html>
+<head>
+</head>
+<body>
+{{ include '_body.stitch' }}
+
+{{ include '_footer.stitch' }}
+</body>
+</html>
+

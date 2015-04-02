@@ -1,0 +1,2 @@
+<h3>I am body </h3>
+{{   include '_laugh.stitch' }}
