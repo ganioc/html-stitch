@@ -27,7 +27,7 @@ module.exports = function (grunt) {
     // replace tag with file content
     var replace_tag =  function(content, tag, srcList){
         var filename = tag.replace(/[\'\"]/g,'').match(/[^\s]+.stitch/);
-        grunt.log.writeln(filename);
+        //grunt.log.writeln(filename);
 
         if(!filename){
             //wrong file name
@@ -89,38 +89,40 @@ module.exports = function (grunt) {
                         grunt.log.writeln('Pass ... ' + fileName);
                     }
                     else{// do template replace work
-                        grunt.log.writeln(counter);
                         counter++;
+                        grunt.log.writeln('Handle ... ' + fileName);
+
                         var fileContent = grunt.file.read(filepath);
                         var destName = destPath + fileName.replace(/.stitch/,'.html');
                         var tags = find_tags(fileContent);
-                        grunt.log.writeln('---------------------');
-                        grunt.log.writeln(fileContent);
-                        grunt.log.writeln(tags);
-                        grunt.log.writeln('---------before------------');
+                        //grunt.log.writeln('---------------------');
+                        //grunt.log.writeln(fileContent);
+                        //grunt.log.writeln(tags);
+                        //grunt.log.writeln('---------before------------');
 
                         //fileContent = replace_tag(fileContent,tags[0],srcList);
                         //fileContent = replace_tag(fileContent,tags[1],srcList);
 
                         while(tags){
                            for(var i=0;i< tags.length;i++){
-                               grunt.log.writeln(tags[i]);
+                               //grunt.log.writeln(tags[i]);
                                fileContent = replace_tag(fileContent,tags[i], srcList);
                            }
                            
                             tags = find_tags(fileContent);
                         }
                         //grunt.log.writeln(srcList);
-                        grunt.log.writeln('--------after-------------');
-                        grunt.log.writeln(fileContent);
-                        grunt.log.writeln(destName);
-                        grunt.log.writeln('---------------------');
+                        //grunt.log.writeln('--------after-------------');
+                        //grunt.log.writeln(fileContent);
+                        //grunt.log.writeln(destName);
+                        //grunt.log.writeln('---------------------');
 
                         grunt.file.write(destName,fileContent);
                         
                     }
                 }
             );
+            grunt.log.writeln('Destination directory is: '+ destPath);
         });
     });
 };

@@ -1,6 +1,6 @@
 # html-stitch
 
-> The best Grunt plugin ever.
+> Grunt plugin to solve the problem of light-weight html file templating engine for Yeoman.
 
 ## Getting Started
 This plugin requires Grunt.
@@ -29,7 +29,8 @@ grunt.initConfig({
       // Task-specific options go here.
     },
     files: {
-      // Target-specific file lists and/or options go here.
+      // dest is the directory to store the generated html files
+      // [...] is the src file path, 
       dest:[test/*.stitch]
     },
   },
@@ -53,7 +54,7 @@ A string value that is used to do something else with whatever else.
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+In this example, the default options are used to do something with whatever. 'Stitch' task will scan all *.stitch src files. _*.stitch files will be considered as a template file, which will not be converted to html file. *.stitch files without a prefix '_'/underscore will be converted to html file and put into the destination directory. _*.stitch files can be nested within each other. Please don't make it a deadlock because of reference between each other.
 
 ```js
 grunt.initConfig({
@@ -66,22 +67,51 @@ grunt.initConfig({
 })
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+#### stitch file format
+```index.stitch
+<html>
+	<head>
+	</head>
+	<body>
+		{{ include '_body.stitch' }}
 
-```js
-grunt.initConfig({
-  stitch: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
+		{{ include '_footer.stitch' }}
+	</body>
+</html>
 ```
+
+```_body.stitch
+<h3>I am body </h3>
+{{   include '_laugh.stitch' }}
+```
+
+```_laugh.stitch
+<i>laugh face!</i>
+```
+
+```_footer.stitch
+<footer>
+	static compiling of html file, simplest!
+</footer>
+```
+
+Finally, we get:
+```index.html
+<html>
+<head>
+</head>
+<body>
+<h3>I am body </h3>
+<i>laugh face!</i>
+
+<footer>
+	static compiling of html file, simplest!
+</footer>
+</body>
+</html>
+```
+## Comment
+I'd like to add more functions into it.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
