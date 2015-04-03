@@ -67,49 +67,37 @@ grunt.initConfig({
 })
 ```
 
-#### stitch file format
+#### stitch syntax
+{{ include _file1.stitch }}
+
+{{ inherit _file2.stitch }}
+{{ include _old.stitch:_new.stitch }}
+
+File without and '_' prefix will be converted to html file.
+
+####example
+
 ```index.stitch
 <html>
 	<head>
 	</head>
 	<body>
-		{{ include '_body.stitch' }}
+		{{ include _body.stitch }}
 
-		{{ include '_footer.stitch' }}
+		{{ include _footer.stitch }}
 	</body>
 </html>
+
+
+You can inherit an basic template file and replace some of it's template.
+```
+{{ inherit _basic.stitch }}
+
+{{ include _laugh.stitch:_cry.stitch }}
+
 ```
 
-```_body.stitch
-<h3>I am body </h3>
-{{   include '_laugh.stitch' }}
-```
 
-```_laugh.stitch
-<i>laugh face!</i>
-```
-
-```_footer.stitch
-<footer>
-	static compiling of html file, simplest!
-</footer>
-```
-
-Finally, we get:
-```index.html
-<html>
-<head>
-</head>
-<body>
-<h3>I am body </h3>
-<i>laugh face!</i>
-
-<footer>
-	static compiling of html file, simplest!
-</footer>
-</body>
-</html>
-```
 ## Comment
 I'd like to add more functions into it.
 

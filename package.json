@@ -1,12 +1,12 @@
 {
   "name": "html-stitch",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "Grunt plugin for html template.",
   "repository": "",
   "author": {
     "name": "spike yang",
     "email": "ganioc.yang@gmail.com",
-    "url": ""
+    "url": "www.boxshell.com"
   },
   "keywords": [
     "gruntplugin",

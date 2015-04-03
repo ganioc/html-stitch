@@ -3,6 +3,9 @@
 {{ include _laugh.stitch }}
 </head>
 <body>
+{{ include '_body.stitch' }}
+
+{{ include '_footer.stitch' }}
 
 </body>
 </html>

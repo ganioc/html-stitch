@@ -30,8 +30,8 @@ exports.stitch = {
   default_options: function (test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/index.html');
-    var expected = grunt.file.read('test/expected/index.html');
+    var actual = grunt.file.read('tmp/inherit.html');
+    var expected = grunt.file.read('test/expected/inherit.html');
     test.equal(actual, expected, 'should describe what the default behavior is.');
 
     test.done();

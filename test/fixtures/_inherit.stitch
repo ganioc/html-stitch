@@ -1,0 +1,4 @@
+{{ inherit _main.stitch }}
+
+{{ include _laugh.stitch:_cry.stitch }}
+
