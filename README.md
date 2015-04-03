@@ -71,11 +71,12 @@ grunt.initConfig({
 {{ include _file1.stitch }}
 
 {{ inherit _file2.stitch }}
+
 {{ include _old.stitch:_new.stitch }}
 
 File without and '_' prefix will be converted to html file.
 
-####example
+Example
 
 ```index.stitch
 <html>
@@ -87,14 +88,13 @@ File without and '_' prefix will be converted to html file.
 		{{ include _footer.stitch }}
 	</body>
 </html>
-
+```
 
 You can inherit an basic template file and replace some of it's template.
 ```
 {{ inherit _basic.stitch }}
 
 {{ include _laugh.stitch:_cry.stitch }}
-
 ```
 
 
@@ -105,7 +105,10 @@ I'd like to add more functions into it.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+2015-04-02 Add {{ include }} tag.
+
+2015-04-03 Add {{ inherit }} tag, {{ include old:new }} replace-function tag.
+
 
 ## License
 Copyright (c) 2015 spike yang. Licensed under the MIT license.
